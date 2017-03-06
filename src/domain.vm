@@ -1,0 +1,65 @@
+#if (${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.domain;#end
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@SuppressWarnings("serial")
+@Entity
+public class ${DOMAIN_CLASS_NAME}  implements Serializable {
+
+    #foreach( $str_const in $constMap.keySet() )
+    private static final String $str_const =  "$constMap.get($str_const)";
+    #end
+    
+    public ${DOMAIN_CLASS_NAME}(){
+    }
+
+
+	@Id
+	@Column(name = "$id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer $id;
+    
+    
+    #foreach($propEntry in $propMap.keySet())
+    
+  	@Column(name = "$propEntry")
+    private $propMap.get($propEntry) $propEntry;
+    #end
+    
+    ##
+   	public void set$id.substring(0,1).toUpperCase()$id.toString().substring(1) ( Integer $id ){
+       		 this.$id = $id;
+    }
+   
+    ##
+   	public Integer get$id.substring(0,1).toUpperCase()$id.toString().substring(1) ( ){
+       		 return this.$id;
+     		 }
+    
+    ##
+    #foreach($propEntry in $propMap.keySet())
+    	public void set$propEntry.substring(0,1).toUpperCase()$propEntry.toString().substring(1) ( $propMap.get($propEntry) $propEntry ){
+       		 this.$propEntry=$propEntry;
+      		 }
+    #end
+   
+   ##
+   #foreach($propEntry in $propMap.keySet())
+    	public $propMap.get($propEntry) get$propEntry.substring(0,1).toUpperCase()$propEntry.toString().substring(1) ( ){
+       		 return this.$propEntry;
+     		 }
+    #end
+
+}

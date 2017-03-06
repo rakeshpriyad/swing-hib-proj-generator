@@ -1,0 +1,17 @@
+#if (${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.dao.impl;#end
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import com.test.swing.spring.dao.GenericDaoImpl;
+import com.test.swing.spring.dao.${DOMAIN_CLASS_NAME}Dao;
+import com.test.swing.spring.domain.${DOMAIN_CLASS_NAME};
+@Repository("${DOMAIN_CLASS_NAME}Dao")
+public class ${DOMAIN_CLASS_NAME}DaoImpl extends GenericDaoImpl<${DOMAIN_CLASS_NAME}, Integer>
+		implements ${DOMAIN_CLASS_NAME}Dao {
+	public ${DOMAIN_CLASS_NAME} findBySsn(String ssn) {
+		Criteria criteria = currentSession().createCriteria(${DOMAIN_CLASS_NAME}.class);
+		criteria.add(Restrictions.eq("ssn", ssn));
+		return (${DOMAIN_CLASS_NAME}) criteria.uniqueResult();
+	}
+}

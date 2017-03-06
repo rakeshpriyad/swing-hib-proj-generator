@@ -1,0 +1,72 @@
+#if (${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.form;#end
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+public class ShoppingMenu extends JFrame {
+		#foreach($propEntry in $propMap.keySet())
+    		private ${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)}Panel ${propEntry.substring(0,1).toLowerCase()}${propEntry.toString().substring(1)}Panel = new ${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)}Panel();
+    	#end
+
+	public ShoppingMenu() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		initMenu();
+		setLayout(new BorderLayout());
+	}
+
+	private class MenuAction implements ActionListener {
+
+		private JPanel panel;
+
+		private MenuAction(JPanel pnl) {
+			this.panel = pnl;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			changePanel(panel);
+		}
+
+	}
+
+	private void initMenu() {
+		JMenuBar menubar = new JMenuBar();
+		JMenu menu = new JMenu("Menu");
+		#foreach($propEntry in $propMap.keySet())
+    	 JMenuItem menuItem${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)} =new JMenuItem("${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)}");
+    	#end
+    	#foreach($propEntry in $propMap.keySet())
+    	 menu.add(menuItem${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)});
+    	#end
+		menubar.add(menu);
+		setJMenuBar(menubar);
+		#foreach($propEntry in $propMap.keySet())
+    	 menuItem${propEntry.substring(0,1).toUpperCase()}${propEntry.toString().substring(1)}.addActionListener(new MenuAction(${propEntry.substring(0,1).toLowerCase()}${propEntry.toString().substring(1)}Panel));
+    	#end
+
+	}
+
+	private void changePanel(JPanel panel) {
+		getContentPane().removeAll();
+		getContentPane().add(panel, BorderLayout.CENTER);
+		getContentPane().doLayout();
+		update(getGraphics());
+		pack();
+	}
+
+	public static void main(String[] args) {
+		ShoppingMenu frame = new ShoppingMenu();
+		frame.setBounds(200, 200, 600, 500);
+		frame.setVisible(true);
+
+	}
+}
+
+

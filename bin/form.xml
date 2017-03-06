@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<forms>
+	<form id="Emp" package="com.test.swing.form" panel="contentPane">
+		<property name="EmpId">Emp Id</property>
+		<property name="EmpName">Emp Name</property>
+		<property name="EmpDoj">Date of Joining</property>
+		<property name="EmpSal">Salary</property>
+		
+	</form>
+		
+</forms>

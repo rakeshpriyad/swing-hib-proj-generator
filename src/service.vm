@@ -1,0 +1,9 @@
+#if (${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.service;#end
+
+
+import com.test.swing.spring.generic.service.GenericService;
+import com.test.swing.spring.domain.${DOMAIN_CLASS_NAME};
+
+public interface ${DOMAIN_CLASS_NAME}Service extends GenericService<${DOMAIN_CLASS_NAME}, Integer> {
+	${DOMAIN_CLASS_NAME} findBySsn(String ssn);
+}

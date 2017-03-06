@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<entities>
+	<entity id="Product" package="com.test.swing.spring" primaryKey="productId">
+		<!-- <property name="productId">Integer</property> -->
+		<property name="productName">String</property>
+		<property name="description">String</property>
+	</entity>
+	<entity id="Category" package="com.test.swing.spring"  primaryKey="categoryId">
+		<!-- <property name="categoryId">Integer</property> -->
+		<property name="categoryName">String</property>
+		<property name="description">String</property>
+	</entity>
+	<entity id="Customer" package="com.test.swing.spring"  primaryKey="customerId">
+		<!-- <property name="customerId">Integer</property> -->
+		<property name="customerName">String</property>
+		<property name="description">String</property>
+	</entity>
+	<entity id="Company" package="com.test.swing.spring"  primaryKey="companyId">
+		<!-- <property name="companyId">Integer</property> -->
+		<property name="companyName">String</property>
+		<property name="description">String</property>
+	</entity>
+	<entity id="Shipping" package="com.test.swing.spring"  primaryKey="shippingId">
+		<!-- <property name="shippingId">Integer</property> -->
+		<property name="shippingName">String</property>
+		<property name="address1">String</property>
+		<property name="address2">String</property>
+		<property name="city">String</property>
+		<property name="state">String</property>
+		<property name="country">String</property>
+		<property name="postalCode">String</property>
+		<property name="mobileNo">String</property>
+		<property name="userId">String</property>
+	</entity>
+	<entity id="Item" package="com.test.swing.spring"  primaryKey="itemId">
+		<!-- <property name="itemId">Integer</property> -->
+		<property name="itemName">String</property>
+		<property name="description">String</property>
+	</entity>
+
+	<entity id="ItemDetails" package="com.test.swing.spring"  primaryKey="itemDetailsId">
+		<!-- <property name="itemDetailsId">Integer</property> -->
+		<property name="itemId">String</property>
+		<property name="itemProperty">String</property>
+		<property name="itemPropertyDesc">String</property>
+		<property name="ItemDetailsName">String</property>
+	</entity>
+	<entity id="ItemType" package="com.test.swing.spring"  primaryKey="itemTypeId">
+		<!-- <property name="itemTypeId">Integer</property> -->
+		<property name="description">String</property>
+		<property name="itemTypeName">String</property>
+		<property name="screenSize">String</property>
+		<property name="facility">String</property>
+		<property name="support">String</property>
+		<property name="offers">String</property>
+	</entity>
+	<entity id="Users" package="com.test.swing.spring"  primaryKey="signUpId">
+		<!-- <property name="signUpId">Integer</property> -->
+		<property name="usersName">String</property>
+		<property name="usersId">String</property>
+		<property name="password">String</property>
+		<property name="dob">String</property>
+		<property name="lastName">String</property>
+		<property name="firstName">String</property>
+		<property name="city">String</property>
+		<property name="state">String</property>
+		<property name="country">String</property>
+		<property name="telNo">String</property>
+		<property name="mobileNo">String</property>
+		<property name="sex">String</property>
+		<property name="address">String</property>
+	</entity>
+	<entity id="Stock" package="com.test.swing.spring"  primaryKey="stockId">
+		<!-- <property name="stockId">Integer</property> -->
+		<property name="stockName">String</property>
+		<property name="quantity">String</property>
+		<property name="price">String</property>
+		<property name="qtyUnit">String</property>
+		<property name="imageName">String</property>
+		<property name="item_id">String</property>
+	</entity>
+	<entity id="Transaction" package="com.test.swing.spring"  primaryKey="transactionId">
+		<!-- <property name="transactionId">Integer</property> -->
+		<property name="transactionName">String</property>
+		<property name="quantity">String</property>
+		<property name="price">String</property>
+		<property name="qtyUnit">String</property>
+		<property name="imageName">String</property>
+		<property name="item_id">String</property>
+	</entity>
+	
+</entities>

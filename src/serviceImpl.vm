@@ -1,0 +1,39 @@
+#if (${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.service.impl;#end
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.test.swing.spring.dao.${DOMAIN_CLASS_NAME}Dao;
+import com.test.swing.spring.dao.GenericDao;
+import com.test.swing.spring.generic.service.GenericServiceImpl;
+import com.test.swing.spring.service.${DOMAIN_CLASS_NAME}Service;
+import com.test.swing.spring.domain.${DOMAIN_CLASS_NAME};
+
+
+@Service("${DOMAIN_CLASS_NAME}Service")
+@Transactional
+public class ${DOMAIN_CLASS_NAME}ServiceImpl extends GenericServiceImpl<${DOMAIN_CLASS_NAME}, Integer>
+		implements ${DOMAIN_CLASS_NAME}Service {
+
+
+	private ${DOMAIN_CLASS_NAME}Dao dao;
+	public ${DOMAIN_CLASS_NAME}ServiceImpl() {
+
+	}
+
+	@Autowired
+	public ${DOMAIN_CLASS_NAME}ServiceImpl(@Qualifier("${DOMAIN_CLASS_NAME}Dao") GenericDao<${DOMAIN_CLASS_NAME}, Integer> genericDao) {
+		super(genericDao);
+		this.dao = (${DOMAIN_CLASS_NAME}Dao) genericDao;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public ${DOMAIN_CLASS_NAME} findBySsn(String ssn) {
+		return dao.findBySsn(ssn);
+	}
+
+}
